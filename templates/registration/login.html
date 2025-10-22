@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container login-container">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card login-card transparent-table">
+        <div class="card-body ">
+          <h3 class="text-center mb-4" action="{% url 'login' %}" method='POST'>Login</h3>
+          <form method="post">
+            {% csrf_token %}
+            <!-- Email input -->
+             <label for="name">username</label>
+            <div class="position-relative form-group mb-3">
+              <i class="bi bi-person" style="position:absolute; left:10px; top:10px;"></i>
+              <input type="text" class="form-control transparent-table px-5" id="email" name="username" placeholder="username" required>
+            </div>
+
+            <!-- Password input -->
+            <label for="name">password</label>
+
+            <div class="form-group mb-3 position-relative">
+
+              <i class="bi bi-lock-fill" style="position: absolute; top: 10px; left:10px; color: gray;"></i>
+              <input type="password" class="form-control transparent-table px-5" id="password" name="password" placeholder="Password" required>
+            </div>
+
+            <!-- Remember me -->
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="remember">
+              <label class="form-check-label" for="remember">Remember me</label>
+            </div>
+
+            <!-- Submit button -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+
+          <div class="text-center mt-3">
+            <small>Don't have an account? <a href="{% url "userRegist" %}">Register</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

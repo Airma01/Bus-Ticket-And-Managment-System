@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-sm">
+    <div class="row align-align-items-center justify-content-center">
+        
+        <div class="container-sm py-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="position-relative text-center" style=" margin: auto;">
+            <img 
+              src="{% static 'natural.avif' %}" 
+              class="img-fluid rounded-4" 
+              alt="Welcome background" 
+              style="border-radius: 50px; height:300px;width:1000px;" 
+
+            />
+            <h2 class="position-absolute top-50 start-50 translate-middle fs-5 fs-md-5"
+                style="
+                    color: hsl(41, 92.9%, 50.4%);
+                    text-shadow: 2px 2px 8px hsl(210, 100%, 10%);
+                    background: hsla(210, 100%, 50%, 0.25);
+                    padding: 1rem 2rem;
+                    border-radius: 1rem;
+                    backdrop-filter: blur(5px);
+                    max-width: 90%;
+                ">
+                Welcome, Mr. {{ user.first_name }}!<br>
+                Your journey begins here.<br><br>
+                <small style="font-weight: 300; color:rgb(252, 245, 245);font-weight:bold;">
+                    if you would book this bus (   it's plate {{bus.plate_number}} Number) please upload your national id and payment screenshoot 
+                </small><br><br>
+                <a href="{% url "home" %}" class="btn btn-outline-primary text-light">Home</a>
+            </h2>
+        </div>
+    </div>
+</div>
+
+        
+        <div class="col-xl-4">
+            <br>
+           <img src="{% static 'selambus.png' %}" alt="selam bus" class="img-fluid" style=""> 
+        </div>
+        <div class="col-xl-4 text-success">
+             <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <label>payment screenshoot:</label>
+  <input type="file" name="payment" class="form-control transparent-table" required><br>
+
+  <label>National Id:</label>
+  <input type="file" name="NationalId" class="form-control transparent-table" required><br>
+
+  <button type="submit"class="btn btn-outline-primary" >
+    save
+  </button>
+  
+</form>
+        </div>
+    </div>
+</div>
+ 
+{% endblock content %}
+

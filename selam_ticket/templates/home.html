@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container-sm py-5 bg-im">
+    <div class="row justify-content-center">
+        <div class="position-relative text-center" style=" margin: auto;">
+            <img 
+              src="{% static 'natural.avif' %}" 
+              class="img-fluid rounded-4" 
+              alt="Welcome background" 
+              style="border-radius: 50px; height:300px;width:1000px;" 
+            />
+            <h2 class="position-absolute top-50 start-50 translate-middle fs-4 fs-md-2"
+                style="
+                    color: hsl(41, 92.9%, 50.4%);
+                    text-shadow: 2px 2px 8px hsl(210, 100%, 10%);
+                    background: hsla(210, 100%, 50%, 0.25);
+                    padding: 1rem 2rem;
+                    border-radius: 1rem;
+                    backdrop-filter: blur(5px);
+                    max-width: 90%;
+                ">
+                Welcome, Mr. {{ user.first_name }}!<br>
+                Your journey begins here.<br><br>
+                <small style="font-weight: 300; color:white;font-family:sans-serif;">
+                    At Selam Bus, our vision is to connect people across cities with comfort, safety, and affordability.
+                    Book your ticket in just a few clicks and travel with confidence.
+                </small><br><br>
+                <a href="" class="btn btn-outline-primary text-light">see detail</a>
+            </h2>
+        </div>
+    </div>
+</div>
+
+
+            <br>
+
+<div class="conatiner-sm mt-5">
+    <div class="row align-items-center justify-content-center">
+        <div class="text-center my-2" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: bold;">
+            <h1 class="text-secondary" style="font-weight:bold;">Today(Tommorow) Travel</h1> </div>
+         <div class="col-8 col-md-3 col-lg-4 col-xl-4">
+           <p class="lead text-gradient text-center" id="typed" style=" color: rgb(255, 115, 0);font-weight:100;"></p>
+        </div>
+        {% for  bus in  BusInfo%}
+        <div class="col-5 col-md-3 col-lg-4 col-xl-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <div class="card-text">
+
+                        <div class="container-sm">
+                            <div class="row align-items-center justify-content-center">
+                                <div class="col-8 col-xl-6">
+                                    <p class="text-sm text-success"><i class="bi bi-geo-alt">{{bus.starting_point}}</i><br>to <br>
+                                        <i class="bi bi-geo-alt text-danger">{{bus.destination}}</i>
+                                    </p>
+                                </div>
+                                <div class="col-8 col-xl-4 ">
+                                    <p class="text-sm"> <p class="text-sm">hello {{user.first_name}} to more info click detail link</p> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="align-items-center justify-content-center">
+                         <a href="{% url 'detail' bus.pk%}" class="text-sm align-item-center justify-content-center">detail</a>
+
+                        </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+         {% endfor %}
+       
+    </div>
+</div>
+
+
+
+<div class="container-sm py-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="text-center">
+                <h1 class="sans-serif text-secondary">Today Announcement</h1>
+                <small class="text-secondary" style="font-family:sans-serif;">Our platform is built with modern technology to bring you fast, simple, and secure access to our services — anytime, anywhere. Whether you're booking your next trip, checking schedules, or reading the latest announcements, we’ve designed everything to reduce your effort and save your time.</small>
+            </div>
+            {% for announce in announce %}
+            <div class="col-5 col-md-4 col-lg-5 col-xl-4 my-5">
+                <div class="card" >
+                    <div class="card-body" >
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    <img src="{{announce.image.url}}" alt="" class="img-fluid" style="width: 100%; height: 100%;">
+                                </div>
+
+
+                                <div class="col-xl-5">
+                                    <div class="card-title text-center">
+                                        <h1 class="text-sm text-center">{{announce.Title}}</h1>
+                                    </div>
+                                    <div class="card-text">
+                                        <p class="text-sm-1" style="font-size:7px;">{{announce.About}} at {{announce.Date}} click bellow link to see detail</p>
+                                        <a href="" class="text-md">detail</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
+

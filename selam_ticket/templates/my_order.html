@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+{% for order in order %}
+<div class="container-sm">
+    <div class="row align-align-items-center justify-content-center">
+        <div class="text-center mb-3 " style="border-radius:100px;">
+            <h1 class="text-secondary">Detail Information About this Plate {{detail.plate_number}} Number</h1>
+        </div>
+        <div class="col-xl-4 mx-5 my-5">
+            <br>
+           <img src="{% static 'selambus.png' %}" alt="selam bus" class="img-fluid" style=""> 
+        </div>
+        <div class="col-xl-4 text-success">
+            <table class="table transparent-table" style="background-color:rgba(14, 173, 252, 0.15)">
+    <thead class="table" style="background-color:rgba(14, 173, 252, 0.15)">
+      <tr >
+        <th class>Attribute</th>
+        <th >Value</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider transparent-table" style="background-color:rgba(14, 173, 252, 0.15)">
+      <tr>
+        <td><i class="bi bi-geo-alt"> </i> Name Of Customer</td>
+        <td>{{order.customer.first_name}} {{order.customer.last_name}}</td>
+      </tr>
+
+     <tr>
+        <td><i class="bi-flag-fill"> Destination</td>
+        <td>{{order.Bus.destination}}</td>
+      </tr>
+
+     <tr>
+        <td><i class="bi-signpost-2-fill"> </i> Distance</td>
+        <td>{{order.Bus.distance_by_km}}km</td>
+      </tr>
+
+      <tr>
+        <td><i class="bi bi-currency-dollar"></i> Price</td>
+        <td>{{order.Bus.price}}Birr</td>
+      </tr>
+
+     <tr>
+        <td><i class="bi bi-123"></i> Plate Number</td>
+        <td>{{order.Bus.plate_number}}</td>
+      </tr>
+
+     <tr>
+        <td><i class="bi bi-people-fill"></i> Available Seat</td>
+        <td>{{order.Bus.max_volume}}</td>
+      </tr>
+
+      <tr>
+        <td><i class="bi bi-time"></i>Appointment Time</td>
+        <td>{{order.Bus.TravelAt}}</td>
+      </tr>
+      <tr>
+        <td><i class="bi bi-time"></i>Ticket Approvment</td>
+        <td>{% if order.is_approved == True %}you have allready approved {% else %}not approved{% endif %}</td>
+      </tr>
+      
+    
+      
+      
+    </tbody>
+  </table>
+            {% comment %} <p> <i class="bi bi-geo-alt"> </i> Starting Point: {{detail.starting_point}}</p>
+            <p> <i class="bi-flag-fill"> </i> Destination: {{detail.destination}}</p>
+            <p> <i class="bi-signpost-2-fill"> </i> Distance : {{detail.distance_by_km}}Km</p>
+            <p> <i class="bi bi-currency-dollar"></i>Price: {{detail.price}}</p>
+            <p> <i class="bi bi-123"></i>Plate Number: {{detail.plate_number}}</p>
+            <p><i class="bi bi-people-fill"></i> Available seat: {{detail.max_volume}}</p> {% endcomment %}
+            
+        </div>
+
+        
+    </div>
+</div>
+</div>
+
+{% endfor %}
+{% endblock content %}
+

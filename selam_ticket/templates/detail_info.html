@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+<div>
+<div>
+<div>
+<div class="container-sm py-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="position-relative text-center" style=" margin: auto;">
+            <img 
+              src="{% static 'natural.avif' %}" 
+              class="img-fluid rounded-4" 
+              alt="Welcome background" 
+              style="border-radius: 50px; height:300px;width:1000px;" 
+
+            />
+            <h2 class="position-absolute top-50 start-50 translate-middle fs-5 fs-md-2 "
+                style="
+                    color: hsl(41, 92.9%, 50.4%);
+                    text-shadow: 2px 2px 8px hsl(210, 100%, 10%);
+                    background: hsla(210, 100%, 50%, 0.25);
+                    padding: 1rem 2rem;
+                    border-radius: 1rem;
+                    backdrop-filter: blur(5px);
+                    max-width: 90%;
+                ">
+                Welcome, Mr. {{ user.first_name }}!<br>
+                Your journey begins here.<br><br>
+                <small style="font-weight: 300 ;color:white;">
+                    At Selam Bus, our vision is to connect people across cities with comfort, safety, and affordability.
+                    Book your ticket in just a few clicks and travel with confidence.
+                </small><br><br>
+                <a href="{% url "home" %}" class="btn btn-outline-primary text-light">Home</a>
+            </h2>
+        </div>
+    </div>
+</div>
+</div>
+</div> 
+
+
+<div class="container-sm">
+    <div class="row align-align-items-center justify-content-center">
+        <div class="text-center mb-3 " style="border-radius:100px;">
+            <h1 class="text-secondary">Detail Information About this Plate {{detail.plate_number}} Number</h1>
+        </div>
+        <div class="col-xl-4 mx-5 my-5">
+            <br>
+           <img src="{% static 'selambus.png' %}" alt="selam bus" class="img-fluid" style=""> 
+        </div>
+        <div class="col-xl-4 text-success">
+            <table class="table transparent-table" style="background-color:rgba(14, 173, 252, 0.15)">
+    <thead class="table" style="background-color:rgba(14, 173, 252, 0.15)">
+      <tr >
+        <th class>Attribute</th>
+        <th >Value</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider transparent-table" style="background-color:rgba(14, 173, 252, 0.15)">
+      <tr>
+        <td><i class="bi bi-geo-alt"> </i> Starting-pont</td>
+        <td>{{detail.starting_point}}</td>
+      </tr>
+
+     <tr>
+        <td><i class="bi-flag-fill"> Destination</td>
+        <td>{{detail.destination}}</td>
+      </tr>
+
+     <tr>
+        <td><i class="bi-signpost-2-fill"> </i> Distance</td>
+        <td>{{detail.distance_by_km}}km</td>
+      </tr>
+
+      <tr>
+        <td><i class="bi bi-currency-dollar"></i> Price</td>
+        <td>{{detail.price}}Birr</td>
+      </tr>
+
+     <tr>
+        <td><i class="bi bi-123"></i> Plate Number</td>
+        <td>{{detail.plate_number}}</td>
+      </tr>
+
+     <tr>
+        <td><i class="bi bi-people-fill"></i> Available Seat</td>
+        <td>{{detail.max_volume}}</td>
+      </tr>
+
+      <tr>
+        <td><i class="bi bi-time"></i>Appointment Time</td>
+        <td>{{detail.TravelAt}}</td>
+      </tr>
+    
+      
+      
+    </tbody>
+  </table>
+   <a href="{% url 'order' detail.pk%}" class="btn btn-outline-primary ">Book The Tickect</a>
+            {% comment %} <p> <i class="bi bi-geo-alt"> </i> Starting Point: {{detail.starting_point}}</p>
+            <p> <i class="bi-flag-fill"> </i> Destination: {{detail.destination}}</p>
+            <p> <i class="bi-signpost-2-fill"> </i> Distance : {{detail.distance_by_km}}Km</p>
+            <p> <i class="bi bi-currency-dollar"></i>Price: {{detail.price}}</p>
+            <p> <i class="bi bi-123"></i>Plate Number: {{detail.plate_number}}</p>
+            <p><i class="bi bi-people-fill"></i> Available seat: {{detail.max_volume}}</p> {% endcomment %}
+            
+        </div>
+
+        
+    </div>
+</div>
+</div>
+
+
+{% endblock content %}
+
