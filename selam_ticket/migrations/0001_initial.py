@@ -38,5 +38,6 @@ class Migration(migrations.Migration):
                 ('customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
                 ('Bus', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='selam_ticket.selambusinfo')),
             ],
+            
         ),
     ]
